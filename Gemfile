@@ -1,7 +1,7 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
-gem 'grape'
-gem 'grape-entity'
+# gem 'grape'
+# gem 'grape-entity'
 
 gem 'rb-readline'
 gem 'bootstrap-sass'
