@@ -12,6 +12,10 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
+  # 如果指定用户是当💰用户，返回 true 
+  def current_user?(user)
+    user == current_user
+  end
   #返回当前登录的用户（若存在的话）,否则返回 cookies 中记忆令牌对应的用户
   def current_user
     if (user_id = session[:user_id])

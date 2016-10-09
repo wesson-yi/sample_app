@@ -1,5 +1,8 @@
 source 'https://ruby.taobao.org'
 
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'faker'
 # gem 'grape'
 # gem 'grape-entity'
 
