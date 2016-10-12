@@ -1,4 +1,8 @@
-source 'https://ruby.taobao.org'
+source 'https://gems.ruby-china.org'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
