@@ -7,7 +7,14 @@ gem 'fog'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'faker'
-# gem 'grape'
+
+# grape
+gem 'grape'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'grape-active_model_serializers'
+# grape swagger
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 # gem 'grape-entity'
 
 gem 'rb-readline'

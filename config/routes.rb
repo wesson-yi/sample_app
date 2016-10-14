@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #  mount API::Base, at: "/"
+  mount DID::Base => '/'
+  mount GrapeSwaggerRails::Engine, at: "/docs"
+  #mount GrapeSwaggerRails::Engine, at: "/documentation"
   root 'static_pages#home'
 
   #get 'static_pages/home'
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   get '/login',   to: 'sessions#new'
   post '/login',  to: 'sessions#create'
   delete'/logout',to: 'sessions#destroy'
-  
+
   resources :users
   resources :account_activation, only: [:edit]
 
