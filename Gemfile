@@ -7,6 +7,7 @@ gem 'fog'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'faker'
+gem 'mysql2'
 
 # grape
 gem 'grape'
