@@ -1,5 +1,9 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token, :activation_token
+  before_save   :downcase_email
+  before_create :create_activation_digest
   has_many :microposts, dependent: :destroy
+<<<<<<< HEAD
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -10,8 +14,10 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   attr_accessor :remember_token
+=======
+>>>>>>> account-activation
 
-  before_save { email.downcase! }
+  # before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50  }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -19,6 +25,18 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false } 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  # 激活账户
+  def activate
+    # update_attribute(:activated, true)
+    # update_attribute(:activated, Time.zone.now)
+    update_columns(activated: FILL_IN, activated_at: FILE_IN)
+  end
+
+  # 发送激活邮件
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
 
   #返回指定字符串的哈希摘要
   def self.digest(string)
@@ -39,9 +57,10 @@ class User < ApplicationRecord
   end
 
   # 如果指定的令牌和摘要匹配，返回 true
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   #忘记用户
@@ -68,4 +87,17 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  private
+
+    # 把邮箱地址转换成小写
+    def downcase_email
+      self.email = email.downcase
+    end
+
+    # 创建并赋值激活令牌、摘要
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 end

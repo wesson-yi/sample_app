@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161013033025) do
     t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
   end
 
+<<<<<<< HEAD
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -32,6 +33,8 @@ ActiveRecord::Schema.define(version: 20161013033025) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
+=======
+>>>>>>> account-activation
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20161013033025) do
     t.string   "remember_digest"
     t.boolean  "admin",             default: false
     t.string   "activation_digest"
-    t.boolean  "activation",        default: false
+    t.boolean  "activated",         default: false
     t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
