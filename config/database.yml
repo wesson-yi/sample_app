@@ -7,11 +7,7 @@
 default: &default
   adapter: mysql2
   host: localhost
-<<<<<<< HEAD
   username: root
-=======
-  name: root
->>>>>>> account-activation
   password: \\
   pool: 5
   timeout: 5000
