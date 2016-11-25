@@ -12,7 +12,7 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
-  # 如果指定用户是当💰用户，返回 true 
+  # 如果指定用户是当💰用户，返回 true
   def current_user?(user)
     user == current_user
   end
