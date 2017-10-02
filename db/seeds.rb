@@ -1,7 +1,8 @@
-User.create!(name: "wesson",
-             email: "wesson@qq.com",
-             password:              "foobar",
-             password_confirmation: "foobar",
+User.create!(name: "wesson.yi",
+
+             email: "wesson_yi@qq.com",
+             password:              "qweqwe",
+             password_confirmation: "qweqwe",
              admin: true)
 
 99.times do |n|
