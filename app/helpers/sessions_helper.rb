@@ -1,5 +1,4 @@
 module SessionsHelper
-
   #登入指定的用户
   def log_in(user)
     session[:user_id] = user.id
@@ -16,6 +15,7 @@ module SessionsHelper
   def current_user?(user)
     user == current_user
   end
+
   #返回当前登录的用户（若存在的话）,否则返回 cookies 中记忆令牌对应的用户
   def current_user
     if (user_id = session[:user_id])
@@ -47,5 +47,4 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
-
 end
